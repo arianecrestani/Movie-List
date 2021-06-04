@@ -1,3 +1,6 @@
+
+
+
 // API Setup
 const movie_Api = "af4c11d1c7c756c2429ca0c3cf65c08c";
 const baseUrl = (endpoint) => {
@@ -20,14 +23,49 @@ const getMovie = () => {
 
 // UI
 
-const updateUI = (json) => {
-  console.log(json);
-  
-  // 
+const searchBtn = document.getElementById("searchBtn")
+const textArea = document.getElementById("textArea")
 
 
+const BtnEventHandler = () => {
+  updateUI()
 }
 
-// Run code
+searchBtn.addEventListener("click",BtnEventHandler);
+
+
+
+
+
+const updateUI = (json) => {
+  console.log(json);
+
+
+  textArea.value = '';
+
+  const title = document.getElementById("title");
+  const overview = document.getElementById("overview");
+  const poster = document.getElementById("poster");
+  const date = document.getElementById("date");
+  const nota = document.getElementById("nota");
+  
+  // 
+  title.innerHTML = json.title ? json.title : "";
+  overview.innerHTML = `${json.overview ? json.overview : ""}`;
+  poster.innerHTML = json.poster ? json.poster : "";
+  date.innerHTML = json.date ? json.date : "";
+  nota.innerHTML = json.nota ? json.nota : "";
+
+  
+}
+
+// Run code show in the console.log
 
 apiRequest(getMovie()).then((json) => updateUI(json));
+console.log(json)
+
+
+
+
+
+
