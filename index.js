@@ -33,39 +33,35 @@ const BtnEventHandler = () => {
 
 searchBtn.addEventListener("click",BtnEventHandler);
 
+const createMovie = (element) => {
+// div
 
 
 
+const title = document.getElementById("title");
+const overview = document.getElementById("overview");
+const poster = document.getElementById("poster");
+const date = document.getElementById("date");
+const nota = document.getElementById("nota");
+
+// 
+title.innerHTML = json.title ? json.title : "";
+overview.innerHTML = `${json.overview ? json.overview : ""}`;
+poster.innerHTML = json.poster ? json.poster : "";
+date.innerHTML = json.date ? json.date : "";
+nota.innerHTML = json.nota ? json.nota : "";
+
+  return div
+}
+//for each element do results retorn a elemnt
 
 const updateUI = (json) => {
   console.log(json);
 
-
-  textArea.value = '';
-
-  const title = document.getElementById("title");
-  const overview = document.getElementById("overview");
-  const poster = document.getElementById("poster");
-  const date = document.getElementById("date");
-  const nota = document.getElementById("nota");
   
-  // 
-  title.innerHTML = json.title ? json.title : "";
-  overview.innerHTML = `${json.overview ? json.overview : ""}`;
-  poster.innerHTML = json.poster ? json.poster : "";
-  date.innerHTML = json.date ? json.date : "";
-  nota.innerHTML = json.nota ? json.nota : "";
-
-  
-}
+//for each element 
+};
 
 // Run code show in the console.log
 
 apiRequest(getMovie()).then((json) => updateUI(json));
-console.log(json)
-
-
-
-
-
-
