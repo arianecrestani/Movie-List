@@ -1,7 +1,6 @@
-
-
-
 // API Setup
+let responseData ={};
+
 const movie_Api = "af4c11d1c7c756c2429ca0c3cf65c08c";
 const baseUrl = (endpoint) => {
   const baseUrl = "https://api.themoviedb.org/3";
@@ -23,45 +22,51 @@ const getMovie = () => {
 
 // UI
 
-const searchBtn = document.getElementById("searchBtn")
-const textArea = document.getElementById("textArea")
-
+const searchBtn = document.getElementById("searchBtn");
+const textArea = document.getElementById("textArea");
 
 const BtnEventHandler = () => {
-  updateUI()
-}
+  updateUi();
+};
 
-searchBtn.addEventListener("click",BtnEventHandler);
+searchBtn.addEventListener("click", BtnEventHandler);
 
 const createMovie = (element) => {
-// div
+  const div = document.createElement("div");
 
+  const title = document.getElementById("title");
+  const overview = document.getElementById("overview");
+  const poster = document.getElementById("poster");
+  const date = document.getElementById("date");
+  const nota = document.getElementById("nota");
 
+  //
+  title.innerHTML = json.title ? json.title : "";
+  overview.innerHTML = `${json.overview ? json.overview : ""}`;
+  poster.innerHTML = json.poster ? json.poster : "";
+  date.innerHTML = json.date ? json.date : "";
+  nota.innerHTML = json.nota ? json.nota : "";
 
-const title = document.getElementById("title");
-const overview = document.getElementById("overview");
-const poster = document.getElementById("poster");
-const date = document.getElementById("date");
-const nota = document.getElementById("nota");
-
-// 
-title.innerHTML = json.title ? json.title : "";
-overview.innerHTML = `${json.overview ? json.overview : ""}`;
-poster.innerHTML = json.poster ? json.poster : "";
-date.innerHTML = json.date ? json.date : "";
-nota.innerHTML = json.nota ? json.nota : "";
-
-  return div
-}
+  return div;
+};
 //for each element do results retorn a elemnt
 
-const updateUI = (json) => {
+const updateUi = (json) => {
   console.log(json);
 
-  
-//for each element 
+  json.results.forEach((element) => {
+    const newElement = {
+      title: element.original_title,
+      overview: element.overview,
+      poster: element.poster_path,
+      date: element.release_date,
+      nota: element.vote_average,
+    };
+    const movieDiv = createMovie(newElement);
+    
+  });
 };
 
 // Run code show in the console.log
 
-apiRequest(getMovie()).then((json) => updateUI(json));
+apiRequest(getMovie()).then((json) => updateUi(json));
