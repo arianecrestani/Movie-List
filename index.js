@@ -1,5 +1,4 @@
 // API Setup
-let responseData ={};
 
 const movie_Api = "af4c11d1c7c756c2429ca0c3cf65c08c";
 const baseUrl = (endpoint) => {
@@ -31,21 +30,49 @@ const BtnEventHandler = () => {
 
 searchBtn.addEventListener("click", BtnEventHandler);
 
+const createTitle = (title) => {
+//criar div title e colocar valor innerhtml 
+//e retornar
+  const titleDiv = document.createElement('div');
+  titleDiv.id = "titleMovie"
+  titleDiv.innerHTML = title;
+   
+  return titleDiv
+
+}
+
+const createOverview = (overview) => {
+  const overviewDiv = document.createElement('div');
+  overviewDiv.id = "overviewDiv"
+  overviewDiv.innerHTML = overview
+
+  return overviewDiv
+}
+
 const createMovie = (element) => {
+
+
   const div = document.createElement("div");
+  const title = createTitle(element.original_title);
+  div.appendChild(title);
 
-  const title = document.getElementById("title");
-  const overview = document.getElementById("overview");
-  const poster = document.getElementById("poster");
-  const date = document.getElementById("date");
-  const nota = document.getElementById("nota");
+  const overview = createOverview(element.overview);
+  div.appendChild(overview)
 
-  //
-  title.innerHTML = json.title ? json.title : "";
-  overview.innerHTML = `${json.overview ? json.overview : ""}`;
-  poster.innerHTML = json.poster ? json.poster : "";
-  date.innerHTML = json.date ? json.date : "";
-  nota.innerHTML = json.nota ? json.nota : "";
+  
+
+
+  // const overview = document.getElementById("overview");
+  // const poster = document.getElementById("poster");
+  // const date = document.getElementById("date");
+  // const nota = document.getElementById("nota");
+
+  // //
+  // title.innerHTML = element.original_title ? element.original_title : "";
+  // overview.innerHTML = `${element.overview ? element.overview : ""}`;
+  // poster.innerHTML = element.poster_path ? element.poster_path: "";
+  // date.innerHTML = element.release_date? element.release_date : "";
+  // nota.innerHTML = element.vote_average ? element.vote_average: "";
 
   return div;
 };
@@ -53,6 +80,8 @@ const createMovie = (element) => {
 
 const updateUi = (json) => {
   console.log(json);
+  
+  const movies = document.getElementById("movies");
 
   json.results.forEach((element) => {
     const newElement = {
@@ -63,7 +92,7 @@ const updateUi = (json) => {
       nota: element.vote_average,
     };
     const movieDiv = createMovie(newElement);
-    
+    movies.appendChild(movieDiv);
   });
 };
 
