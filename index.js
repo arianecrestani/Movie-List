@@ -15,64 +15,80 @@ const apiRequest = async (endpoint) => {
 
 // Endpoints
 
-const getMovie = () => {
-  return "discover/movie?language=en-US&sort_by=popularity.desc&page=1";
-};
 
-// UI
+const getMovie = (query) => `search/movie?language=en-US&query=${query}&page=1`
+
+
 
 const searchBtn = document.getElementById("searchBtn");
 const textArea = document.getElementById("textArea");
 
 const BtnEventHandler = () => {
-  updateUi();
+  apiRequest(getMovie(textArea.value)).then((json) => updateUi(json));
 };
 
 searchBtn.addEventListener("click", BtnEventHandler);
 
 const createTitle = (title) => {
-//criar div title e colocar valor innerhtml 
-//e retornar
-  const titleDiv = document.createElement('div');
-  titleDiv.id = "titleMovie"
+  //criar div title e colocar valor innerhtml
+  //e retornar
+  const titleDiv = document.createElement("div");
+  titleDiv.id = "titleMovie";
   titleDiv.innerHTML = title;
-   
-  return titleDiv
 
-}
+  return titleDiv;
+};
 
 const createOverview = (overview) => {
-  const overviewDiv = document.createElement('div');
-  overviewDiv.id = "overviewDiv"
-  overviewDiv.innerHTML = overview
+  const overviewDiv = document.createElement("div");
+  overviewDiv.id = "overviewMovie";
+  overviewDiv.innerHTML = overview;
 
-  return overviewDiv
-}
+  return overviewDiv;
+};
+const createPoster = (poster) => {
+  const posterDiv = document.createElement("div");
+  posterDiv.id = "posterMovie";
+  posterDiv.src=""
+  posterDiv.innerHTML = poster;
+
+  return posterDiv;
+};
+
+const createDate = (date) => {
+  const dateDiv = document.createElement("div");
+  dateDiv.id = "dateMovie";
+  dateDiv.innerHTML = date;
+
+  return dateDiv;
+};
+const createNota = (nota) => {
+  const notaDiv = document.createElement("div");
+  notaDiv.id = "notaMovie";
+  notaDiv.innerHTML = nota;
+
+  return notaDiv;
+};
 
 const createMovie = (element) => {
 
-
   const div = document.createElement("div");
+  div.id = "movieSection";
   const title = createTitle(element.original_title);
   div.appendChild(title);
 
+  const poster = createPoster(element.poster_path);
+  poster.src = element.poster_path;
+  div.appendChild(poster);
+
   const overview = createOverview(element.overview);
-  div.appendChild(overview)
+  div.appendChild(overview);
 
-  
+  const date = createDate(element.release_date);
+  div.appendChild(date);
 
-
-  // const overview = document.getElementById("overview");
-  // const poster = document.getElementById("poster");
-  // const date = document.getElementById("date");
-  // const nota = document.getElementById("nota");
-
-  // //
-  // title.innerHTML = element.original_title ? element.original_title : "";
-  // overview.innerHTML = `${element.overview ? element.overview : ""}`;
-  // poster.innerHTML = element.poster_path ? element.poster_path: "";
-  // date.innerHTML = element.release_date? element.release_date : "";
-  // nota.innerHTML = element.vote_average ? element.vote_average: "";
+  const nota = createNota(element.vote_average);
+  div.appendChild(nota);
 
   return div;
 };
@@ -80,7 +96,7 @@ const createMovie = (element) => {
 
 const updateUi = (json) => {
   console.log(json);
-  
+
   const movies = document.getElementById("movies");
 
   json.results.forEach((element) => {
@@ -97,5 +113,3 @@ const updateUi = (json) => {
 };
 
 // Run code show in the console.log
-
-apiRequest(getMovie()).then((json) => updateUi(json));
