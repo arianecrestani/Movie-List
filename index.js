@@ -15,7 +15,7 @@ const apiRequest = async (endpoint) => {
 
 // Endpoints
 
-
+//the parameter of query is textArea where I such for movies
 const getMovie = (query) => `search/movie?language=en-US&query=${query}&page=1`
 
 
@@ -49,7 +49,7 @@ const createOverview = (overview) => {
 const createPoster = (poster) => {
   const posterDiv = document.createElement("div");
   posterDiv.id = "posterMovie";
-  posterDiv.src=""
+  posterDiv.src= ""
   posterDiv.innerHTML = poster;
 
   return posterDiv;
@@ -74,6 +74,7 @@ const createMovie = (element) => {
 
   const div = document.createElement("div");
   div.id = "movieSection";
+
   const title = createTitle(element.original_title);
   div.appendChild(title);
 
@@ -101,11 +102,11 @@ const updateUi = (json) => {
 
   json.results.forEach((element) => {
     const newElement = {
-      title: element.original_title,
+      original_title: element.original_title,
       overview: element.overview,
-      poster: element.poster_path,
-      date: element.release_date,
-      nota: element.vote_average,
+      poster_path: element.poster_path,
+      release_date: element.release_date,
+      vote_average: element.vote_average,
     };
     const movieDiv = createMovie(newElement);
     movies.appendChild(movieDiv);
