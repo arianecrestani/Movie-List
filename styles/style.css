@@ -3,26 +3,34 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 3px;
+  padding: 0px;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-image: linear-gradient(
     to right,
-    rgb(41, 128, 185),
+    rgb(40, 106, 150),
     rgb(44, 62, 80)
   );
   font-family: "Noto Sans HK", sans-serif;
 }
+h1 {
+  background-color: aliceblue;
+  font-size: 2rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ color: darkturquoise;
+  text-align: center;
+}
+header {
+}
+#searchBtn {
+  margin: 2em;
+  padding: 8px;
+}
 #textArea {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 50px;
   border-radius: 10px;
   border: 1px solid dimgray;
@@ -30,11 +38,16 @@ body {
   outline: none;
 }
 #movies {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-   
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }
 #logo {
-    width: 50%;
-    padding:50px
+  width: 50%;
+  padding: 50px;
+}
+#overviewMovie {
+  display: flex;
+  flex-direction: column;
+}
+#notaMovie {
 }

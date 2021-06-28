@@ -52,8 +52,9 @@ const createPoster = (poster) => {
   const posterDiv = document.createElement("div");
   posterDiv.id = "posterMovie";
   posterDiv.innerHTML=`<img src="https://image.tmdb.org/t/p/w185/${poster}"/>`;
-  
-  return posterDiv;
+
+ return posterDiv
+
 };
 
 const createDate = (date) => {
@@ -98,17 +99,22 @@ const createMovie = (element) => {
   return div;
 
 
-
 };
 
+const showError = () => {
+  if (posterDiv.src === null){
+  
+ posterDiv.innerHTML = "";
 
+  } 
+ };
 //for each element do results retorn a elemnt
 
 const updateUi = (json) => {
 
   const movies = document.getElementById("movies");
     //cleanig input 
-  movies.innerHTML = ""
+  movies.innerHTML = "";
  
   json.results.forEach((element) => {
     const newElement = {
