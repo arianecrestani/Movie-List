@@ -21,11 +21,15 @@ const getMovie = (query) => `search/movie?language=en-US&query=${query}&page=1`;
 const searchBtn = document.getElementById("searchBtn");
 const textArea = document.getElementById("textArea");
 
+
 const BtnEventHandler = () => {
   apiRequest(getMovie(textArea.value)).then((json) => updateUi(json));
+
 };
 
 searchBtn.addEventListener("click", BtnEventHandler);
+
+
 
 const createTitle = (title) => {
   //criar div title e colocar valor innerhtml
@@ -67,7 +71,10 @@ const createNota = (nota) => {
   return notaDiv;
 };
 
+
+
 const createMovie = (element) => {
+
 
   const div = document.createElement("div");
   div.id = "movieSection";
@@ -89,14 +96,20 @@ const createMovie = (element) => {
   div.appendChild(nota);
 
   return div;
+
+
+
 };
+
+
 //for each element do results retorn a elemnt
 
 const updateUi = (json) => {
-  console.log(json);
 
   const movies = document.getElementById("movies");
-
+    //cleanig input 
+  movies.innerHTML = ""
+ 
   json.results.forEach((element) => {
     const newElement = {
       original_title: element.original_title,
@@ -105,9 +118,14 @@ const updateUi = (json) => {
       release_date: element.release_date,
       vote_average: element.vote_average,
     };
+   
     const movieDiv = createMovie(newElement);
     movies.appendChild(movieDiv);
+    
+   
   });
+ 
+
 };
 
 // Run code show in the console.log
