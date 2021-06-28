@@ -31,8 +31,8 @@ body {
 }
 #movies {
     display: grid;
-    grid-template-columns: auto auto auto auto ;
-    background-color: aqua;
+    grid-template-columns: auto auto auto auto auto;
+   
 }
 #logo {
     width: 50%;

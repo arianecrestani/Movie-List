@@ -16,9 +16,7 @@ const apiRequest = async (endpoint) => {
 // Endpoints
 
 //the parameter of query is textArea where I such for movies
-const getMovie = (query) => `search/movie?language=en-US&query=${query}&page=1`
-
-
+const getMovie = (query) => `search/movie?language=en-US&query=${query}&page=1`;
 
 const searchBtn = document.getElementById("searchBtn");
 const textArea = document.getElementById("textArea");
@@ -49,9 +47,8 @@ const createOverview = (overview) => {
 const createPoster = (poster) => {
   const posterDiv = document.createElement("div");
   posterDiv.id = "posterMovie";
-  posterDiv.src= ""
-  posterDiv.innerHTML = poster;
-
+  posterDiv.innerHTML=`<img src="https://image.tmdb.org/t/p/w185/${poster}"/>`;
+  
   return posterDiv;
 };
 
@@ -79,7 +76,7 @@ const createMovie = (element) => {
   div.appendChild(title);
 
   const poster = createPoster(element.poster_path);
-  poster.src = element.poster_path;
+  poster.src= element.poster_path;
   div.appendChild(poster);
 
   const overview = createOverview(element.overview);
