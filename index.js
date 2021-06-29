@@ -21,15 +21,11 @@ const getMovie = (query) => `search/movie?language=en-US&query=${query}&page=1`;
 const searchBtn = document.getElementById("searchBtn");
 const textArea = document.getElementById("textArea");
 
-
 const BtnEventHandler = () => {
   apiRequest(getMovie(textArea.value)).then((json) => updateUi(json));
-
 };
 
 searchBtn.addEventListener("click", BtnEventHandler);
-
-
 
 const createTitle = (title) => {
   //criar div title e colocar valor innerhtml
@@ -52,14 +48,13 @@ const createPoster = (poster) => {
   const posterDiv = document.createElement("div");
   posterDiv.id = "posterMovie";
 
-  if(poster === null){
-    posterDiv.innerHTML=`<img src="https://www.themoviedb.org/assets/2/apple-touch-icon-cfba7699efe7a742de25c28e08c38525f19381d31087c69e89d6bcb8e3c0ddfa.png"/>`
-  }else {
-    posterDiv.innerHTML=`<img src="https://image.tmdb.org/t/p/w185/${poster}"/>`;
+  if (poster === null) {
+    posterDiv.innerHTML = `<img src="https://www.themoviedb.org/assets/2/apple-touch-icon-cfba7699efe7a742de25c28e08c38525f19381d31087c69e89d6bcb8e3c0ddfa.png"/>`;
+  } else {
+    posterDiv.innerHTML = `<img src="https://image.tmdb.org/t/p/w185/${poster}"/>`;
   }
 
- return posterDiv
-
+  return posterDiv;
 };
 
 const createDate = (date) => {
@@ -77,11 +72,7 @@ const createNota = (nota) => {
   return notaDiv;
 };
 
-
-
 const createMovie = (element) => {
-
-
   const div = document.createElement("div");
   div.id = "movieSection";
 
@@ -89,7 +80,7 @@ const createMovie = (element) => {
   div.appendChild(title);
 
   const poster = createPoster(element.poster_path);
-  poster.src= element.poster_path;
+  poster.src = element.poster_path;
   div.appendChild(poster);
 
   const overview = createOverview(element.overview);
@@ -102,25 +93,15 @@ const createMovie = (element) => {
   div.appendChild(nota);
 
   return div;
-
-
 };
 
-const showError = () => {
-  if (posterDiv.src === null){
-  
- posterDiv.innerHTML = "";
-
-  } 
- };
 //for each element do results retorn a elemnt
 
 const updateUi = (json) => {
-
   const movies = document.getElementById("movies");
-    //cleanig input 
+  //cleanig input
   movies.innerHTML = "";
- 
+
   json.results.forEach((element) => {
     const newElement = {
       original_title: element.original_title,
@@ -129,14 +110,10 @@ const updateUi = (json) => {
       release_date: element.release_date,
       vote_average: element.vote_average,
     };
-   
+
     const movieDiv = createMovie(newElement);
     movies.appendChild(movieDiv);
-    
-   
   });
- 
-
 };
 
 // Run code show in the console.log
