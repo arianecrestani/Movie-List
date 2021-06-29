@@ -4,38 +4,61 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0px;
+  
 }
 
 body {
+
   background-image: linear-gradient(
     to right,
     rgb(40, 106, 150),
     rgb(44, 62, 80)
   );
   font-family: "Noto Sans HK", sans-serif;
+  
+}
+.container {
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans HK", sans-serif;
+}
+::placeholder{
+  color: black;
 }
 h1 {
   background-color: aliceblue;
   font-size: 2rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
- color: darkturquoise;
+  color: darkturquoise;
   text-align: center;
 }
-header {
-}
+
 #searchBtn {
-  margin: 2em;
-  padding: 8px;
+  padding: 10px;
+  width: 50%;
+  line-height: 20px;
+  margin: 10px 0;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  font-size: 1.3em;
+  color: black;
+
+  
 }
 #textArea {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   height: 50px;
+  width: 50%;
   border-radius: 10px;
-  border: 1px solid dimgray;
+  border: 0px solid;
   padding-left: 50px;
   outline: none;
+  font-size: 1.3em;
+  
 }
 #movies {
   display: grid;
@@ -45,10 +68,18 @@ header {
   width: 50%;
   padding: 50px;
 }
+#titleMovie {
+
+}
+#posterMovie {
+
+}
 #overviewMovie {
   display: flex;
  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
+}
+#dateMovie {
+
 }
 #notaMovie {
 }
