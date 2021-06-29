@@ -64,6 +64,7 @@ const createDate = (date) => {
 
   return dateDiv;
 };
+
 const createNota = (nota) => {
   const notaDiv = document.createElement("div");
   notaDiv.id = "notaMovie";

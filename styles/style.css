@@ -79,12 +79,15 @@ h1 {
 }
 #titleMovie {
   padding: 20px;
+  font-size: 25px;
+  text-align: center;
 }
 
 #overviewMovie {
   text-align: justify;
   padding: 2rem;
   line-height: 1.5em;
+  position: relative;
 }
 #dateMovie {
   padding: 20px;
