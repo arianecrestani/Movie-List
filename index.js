@@ -24,8 +24,14 @@ const textArea = document.getElementById("textArea");
 const BtnEventHandler = () => {
   apiRequest(getMovie(textArea.value)).then((json) => updateUi(json));
 };
+const enterPress = (e) => {
+  if (e.key === "Enter") {
+    BtnEventHandler();
+  }
+};
 
 searchBtn.addEventListener("click", BtnEventHandler);
+textArea.addEventListener("keypress", enterPress);
 
 const createTitle = (title) => {
   //criar div title e colocar valor innerhtml

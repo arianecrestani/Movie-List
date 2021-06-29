@@ -88,6 +88,7 @@ h1 {
   padding: 2rem;
   line-height: 1.5em;
   position: relative;
+  letter-spacing: normal;
 }
 #dateMovie {
   padding: 20px;
