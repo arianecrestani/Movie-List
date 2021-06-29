@@ -66,7 +66,8 @@ const createPoster = (poster) => {
 const createDate = (date) => {
   const dateDiv = document.createElement("div");
   dateDiv.id = "dateMovie";
-  dateDiv.innerHTML = date;
+  const newDate = new Date(date);
+  dateDiv.innerHTML =  newDate.getDate() + "/" + (1 + newDate.getMonth()) + "/" + newDate.getFullYear();;
 
   return dateDiv;
 };
