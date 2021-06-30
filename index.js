@@ -17,9 +17,11 @@ const apiRequest = async (endpoint) => {
 
 //the parameter of query is textArea where I such for movies
 const getMovie = (query) => `search/movie?language=en-US&query=${query}&page=1`;
+const getPopularity = () =>`movie/popular?language=en-US&sort_by=popularity.desc&page=1`
 
 const searchBtn = document.getElementById("searchBtn");
 const textArea = document.getElementById("textArea");
+const popularBtn = document.getElementById("popularBtn");
 
 const BtnEventHandler = () => {
   apiRequest(getMovie(textArea.value)).then((json) => updateUi(json));
@@ -30,8 +32,13 @@ const enterPress = (e) => {
   }
 };
 
+const btnPopularity = () => {
+  apiRequest(getPopularity(textArea.value)).then((json) => updateUi(json));
+}
+
 searchBtn.addEventListener("click", BtnEventHandler);
 textArea.addEventListener("keypress", enterPress);
+popularBtn.addEventListener("click", btnPopularity)
 
 const createTitle = (title) => {
   //criar div title e colocar valor innerhtml
