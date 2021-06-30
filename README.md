@@ -19,3 +19,7 @@ Popular movies
 The Top Rated
 
 Available for mobile
+
+
+## Preview
+![flwochart](./image/preview.png)
