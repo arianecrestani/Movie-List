@@ -16,6 +16,6 @@ Have information about overview, note as well release date and how many movies w
 
 Popular movies
 
-the Top Rated
+The Top Rated
 
-available for mobile
+Available for mobile
