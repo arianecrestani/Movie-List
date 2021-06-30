@@ -12,7 +12,7 @@ I used the Api - the Movie DB
 
 Search for movies
 
-Have information about overview, note as well release date and how many movies were released in this title
+Have information about overview, note as well release date and how many movies were released in this movie title
 
 Popular movies
 
