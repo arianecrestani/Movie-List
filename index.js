@@ -17,28 +17,37 @@ const apiRequest = async (endpoint) => {
 
 //the parameter of query is textArea where I such for movies
 const getMovie = (query) => `search/movie?language=en-US&query=${query}&page=1`;
-const getPopularity = () =>`movie/popular?language=en-US&sort_by=popularity.desc&page=1`
+const getPopularity = () =>
+  `movie/popular?language=en-US&sort_by=popularity.desc&page=1`;
+const getTopRated = () =>
+  `movie/top_rated?language=en-US&sort_by=popularity.desc&page=1`;
 
 const searchBtn = document.getElementById("searchBtn");
 const textArea = document.getElementById("textArea");
 const popularBtn = document.getElementById("popularBtn");
+const topRatedBtn = document.getElementById("topRatedBtn");
 
-const BtnEventHandler = () => {
+const btnEventHandler = () => {
   apiRequest(getMovie(textArea.value)).then((json) => updateUi(json));
 };
 const enterPress = (e) => {
   if (e.key === "Enter") {
-    BtnEventHandler();
+    btnEventHandler();
   }
 };
 
 const btnPopularity = () => {
   apiRequest(getPopularity(textArea.value)).then((json) => updateUi(json));
-}
+};
 
-searchBtn.addEventListener("click", BtnEventHandler);
+const btnTopRated = () => {
+  apiRequest(getTopRated(textArea.value)).then((json) => updateUi(json));
+};
+
+searchBtn.addEventListener("click", btnEventHandler);
 textArea.addEventListener("keypress", enterPress);
-popularBtn.addEventListener("click", btnPopularity)
+popularBtn.addEventListener("click", btnPopularity);
+topRatedBtn.addEventListener("click", btnTopRated);
 
 const createTitle = (title) => {
   //criar div title e colocar valor innerhtml
@@ -74,7 +83,12 @@ const createDate = (date) => {
   const dateDiv = document.createElement("div");
   dateDiv.id = "dateMovie";
   const newDate = new Date(date);
-  dateDiv.innerHTML =  newDate.getDate() + "/" + (1 + newDate.getMonth()) + "/" + newDate.getFullYear();;
+  dateDiv.innerHTML =
+    newDate.getDate() +
+    "/" +
+    (1 + newDate.getMonth()) +
+    "/" +
+    newDate.getFullYear();
 
   return dateDiv;
 };
