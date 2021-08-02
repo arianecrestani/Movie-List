@@ -97,7 +97,9 @@ const createNota = (nota) => {
   const notaDiv = document.createElement("div");
   notaDiv.id = "notaMovie";
   notaDiv.innerHTML = nota;
-
+  if(nota >= 8){
+    notaDiv.setAttribute("style", "background: rgba(168, 8, 185, 0.842);");
+  }
   return notaDiv;
 };
 
