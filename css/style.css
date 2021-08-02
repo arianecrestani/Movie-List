@@ -25,6 +25,7 @@ body {
   color:rgb(40, 106, 150)
 }
 h1 {
+
   background-color:none;
   font-size: 2rem;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -46,7 +47,7 @@ h1 {
 #textArea {
   justify-content: center;
   height: 46px;
-  width: 65%;
+  width: 55%;
   border:none;
   border-radius: 30px;
   padding-left: 20px;
@@ -78,7 +79,7 @@ h1 {
  
 }
 #logo {
-  width: 50%;
+  width: 20rem;
   padding: 50px;
 }
 #titleMovie {
