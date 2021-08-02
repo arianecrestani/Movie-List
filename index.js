@@ -100,6 +100,9 @@ const createNota = (nota) => {
   if(nota >= 8){
     notaDiv.setAttribute("style", "background: rgba(168, 8, 185, 0.842);");
   }
+  if (nota === 0){
+    notaDiv.innerHTML = "no result"
+  }
   return notaDiv;
 };
 
